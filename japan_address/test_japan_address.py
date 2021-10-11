@@ -1,4 +1,5 @@
 import pytest
+import os
 import japan_address
 
 address_list = [
@@ -34,8 +35,10 @@ class TestJapanAddress():
     prefecture_country_to_country = {}
     prefecture_city_to_city = {}
 
-    def setup_method(self, method): 
-        with open("data/local_government.csv") as f:
+    def setup_method(self, method):
+        dirname = os.path.dirname(__file__)
+        input_file_name = f"{dirname}/data/local_government.csv"
+        with open(input_file_name) as f:
             first = True
             for line in f.readlines():
                 if first:
