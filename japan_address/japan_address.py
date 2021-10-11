@@ -352,7 +352,7 @@ class JapanAddress():
         return pref, None
 
 
-    def extract_city(self, address):
+    def extract_city(self, address, designated=False):
         # addressは都道府県から始まっている前提
 
         # 郡があったら郡を除去する
@@ -360,7 +360,7 @@ class JapanAddress():
         if country is not None:
             address = address.replace(pref + country, pref)
 
-        for prefecture_city, city in self.prefecture_city_to_city().items():
+        for prefecture_city, city in self.prefecture_city_to_city(designated=designated).items():
             m = re.match(rf"^{prefecture_city}", address)
             if m is not None:
                 pref = prefecture_city.replace(city, "")
@@ -371,11 +371,11 @@ class JapanAddress():
         return pref, None
 
 
-    def extract_details(self, address):
+    def extract_details(self, address, designated=False):
         # addressは都道府県から始まっている前提
         # pref = self.extract_prefecture(address)
         pref, country = self.extract_country(address)
-        pref, city = self.extract_city(address)
+        pref, city = self.extract_city(address, designated=designated)
 
         # 都道府県、市区町村のいずれかが検出されなかった場合は失敗としてNoneを返却
         if pref is None or city is None:

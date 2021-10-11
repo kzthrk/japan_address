@@ -433,6 +433,8 @@ class TestJapanAddress():
             assert pref == pref_list[i]
             assert city == city_list[i]
 
+        pref, city = ja.extract_city("千葉県千葉市中央区青葉1の1の1", designated=True)
+        assert city == "千葉市中央区"
 
     def test_extract_details(self):
         for i in range(len(address_list)):
@@ -441,7 +443,9 @@ class TestJapanAddress():
             assert city == city_list[i]
             assert details == details_list[i]
 
-
+        pref, city, details = ja.extract_details("千葉県千葉市中央区青葉1の1の1", designated=True)
+        assert city == "千葉市中央区"
+        assert details == "青葉1の1の1"
     #
     # Utils
     #
