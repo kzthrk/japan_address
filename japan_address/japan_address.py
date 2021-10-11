@@ -1,3 +1,4 @@
+import os
 import re
 import sqlite3
 from difflib import SequenceMatcher
@@ -13,7 +14,8 @@ class JapanAddress():
         self.conn = sqlite3.connect(":memory:")
         self.cur = self.conn.cursor()
 
-        input_file_name = "data/local_government.csv"
+        dirname = os.path.dirname(__file__)
+        input_file_name = f"{dirname}/data/local_government.csv"
 
         with open(input_file_name) as f:
             # テーブル作成
