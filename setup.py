@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="japan_address",
-    version="0.7.0",
+    version="0.7.1",
     license='MIT',
     author="kzthrk",
     author_email="kzthrk@gmail.com",
