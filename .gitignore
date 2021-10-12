@@ -5,3 +5,5 @@ __pychache__
 *.pyo
 *.DS_store
 venv
+dist/*
+*.egg-info
