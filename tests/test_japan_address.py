@@ -37,7 +37,7 @@ class TestJapanAddress():
 
     def setup_method(self, method):
         dirname = os.path.dirname(__file__)
-        input_file_name = f"{dirname}/data/local_government.csv"
+        input_file_name = f"{dirname}/../japan_address/data/local_government.csv"
         with open(input_file_name) as f:
             first = True
             for line in f.readlines():
